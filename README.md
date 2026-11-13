@@ -2,6 +2,8 @@
 
 A dark blue, space-themed portfolio built with plain HTML, CSS, and JavaScript. No installation, build step, paid service, external fonts, or API keys are needed.
 
+Demo: https://sabahatnaila-tech.github.io/demo-web/
+
 ## Preview on your computer
 
 Extract the ZIP, then double-click `index.html`. Keep `index.html`, `styles.css`, `script.js`, and `favicon.svg` together in the same folder.

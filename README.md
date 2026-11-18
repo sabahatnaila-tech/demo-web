@@ -1,6 +1,3 @@
-# Naila Sabahat — Personal Portfolio
-
-A dark blue, space-themed portfolio built with plain HTML, CSS, and JavaScript. No installation, build step, paid service, external fonts, or API keys are needed.
 
 Demo: https://sabahatnaila-tech.github.io/demo-web/
 

@@ -3,47 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code Quest | HTML, CSS & JavaScript</title>
+  <meta name="theme-color" content="#070e20">
+  <title>Code Quest | Naila Sabahat</title>
   <style>
     * { box-sizing: border-box; }
-    :root { color-scheme: light; }
+
     body {
-      margin: 0; min-height: 100vh; padding: 24px; display: grid; place-items: center;
-      font-family: "Trebuchet MS", Arial, sans-serif; color: #20213a;
-      background: radial-gradient(circle at 8% 8%, #ffe7a8, transparent 30%),
-                  radial-gradient(circle at 92% 90%, #c7f5ed, transparent 32%), #f1f0ff;
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: #20213a;
+      background:
+        radial-gradient(circle at top left, #ffe7a8, transparent 32%),
+        radial-gradient(circle at bottom right, #c7f5ed, transparent 35%),
+        #f1f0ff;
     }
-    button, input { font: inherit; }
-    .quiz { width: min(100%, 720px); overflow: hidden; border: 4px solid #292947;
-      border-radius: 28px; background: #fff; box-shadow: 9px 9px 0 #292947; }
-    header { padding: 28px; color: #fff; background: #6257d9; }
-    .badge { display: inline-block; padding: 7px 12px; border-radius: 999px; color: #292947;
-      background: #ffe27a; font-size: .8rem; font-weight: 900; letter-spacing: 1px; }
+
+    .quiz {
+      width: min(100%, 700px);
+      overflow: hidden;
+      border: 4px solid #292947;
+      border-radius: 28px;
+      background: white;
+      box-shadow: 9px 9px 0 #292947;
+    }
+
+    header { padding: 28px; color: white; background: #6257d9; }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      color: #292947;
+      background: #ffe27a;
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
     h1 { margin: 16px 0 6px; font-size: clamp(1.8rem, 6vw, 2.6rem); }
-    header p { margin: 0; opacity: .92; }
-    .stats { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; font-weight: bold; }
-    .track { height: 12px; margin-top: 12px; overflow: hidden; border: 2px solid #fff;
-      border-radius: 99px; background: #443aa9; }
-    #bar { width: 0; height: 100%; border-radius: 99px; background: #ffe27a; transition: width .3s; }
+    header p { margin: 0; opacity: .9; }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      font-weight: bold;
+    }
+
+    .track {
+      height: 12px;
+      margin-top: 12px;
+      overflow: hidden;
+      border: 2px solid white;
+      border-radius: 99px;
+      background: #443aa9;
+    }
+
+    #bar {
+      width: 0;
+      height: 100%;
+      border-radius: 99px;
+      background: #ffe27a;
+      transition: width .3s ease;
+    }
+
     main { padding: 30px; }
-    .category { display: inline-block; margin-bottom: 10px; padding: 6px 11px; border-radius: 10px;
-      color: #5147bc; background: #eeecff; font-size: .82rem; font-weight: bold; text-transform: uppercase; }
+
+    .category {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 11px;
+      border-radius: 10px;
+      color: #5147bc;
+      background: #eeecff;
+      font-size: .82rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
     h2 { margin: 8px 0 22px; font-size: 1.35rem; line-height: 1.4; }
     .answers { display: grid; gap: 12px; }
-    .answer { width: 100%; padding: 14px 16px; border: 2px solid #d9d8eb; border-radius: 14px;
-      color: #292947; background: #fff; text-align: left; cursor: pointer; transition: .15s; }
-    .answer:hover:not(:disabled) { transform: translateY(-2px); border-color: #6257d9; background: #f6f5ff; }
+
+    button, input { font: inherit; }
+
+    .answer, .text-answer {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #d9d8eb;
+      border-radius: 14px;
+    }
+
+    .answer {
+      color: #292947;
+      background: white;
+      text-align: left;
+      cursor: pointer;
+      transition: transform .15s, border-color .15s, background .15s;
+    }
+
+    .answer:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: #6257d9;
+      background: #f6f5ff;
+    }
+
     .answer:disabled { cursor: default; }
     .answer.correct { border-color: #24a875; background: #e5fff2; }
     .answer.wrong { border-color: #e45e68; background: #fff0f0; }
-    .text-answer { width: 100%; padding: 14px 16px; border: 2px solid #d9d8eb; border-radius: 14px; }
+
     .feedback { min-height: 28px; margin: 16px 0 10px; font-weight: bold; }
-    .good { color: #16835c; } .try { color: #c64750; }
-    .action { width: 100%; padding: 14px; border: 0; border-radius: 14px; color: white;
-      background: #292947; font-weight: bold; cursor: pointer; }
+    .good { color: #16835c; }
+    .try { color: #c64750; }
+
+    .action {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 14px;
+      color: white;
+      background: #292947;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
     .action:disabled { opacity: .45; cursor: not-allowed; }
     .action.purple { margin-top: 12px; background: #6257d9; }
-    @media (max-width: 500px) { body { padding: 14px; } header, main { padding: 22px; } .stats { font-size: .9rem; } }
+
+    .home-link {
+      display: block;
+      margin-top: 20px;
+      color: #5147bc;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .home-link:hover { text-decoration: underline; }
+
+    @media (max-width: 500px) {
+      body { padding: 14px; }
+      header, main { padding: 22px; }
+      .stats { font-size: .9rem; }
+    }
   </style>
 </head>
 <body>
@@ -52,71 +158,128 @@
       <div class="badge">🧠 CODE QUEST</div>
       <h1>HTML, CSS &amp; JavaScript Quiz</h1>
       <p>Answer questions, solve mini challenges, and earn points!</p>
-      <div class="stats"><span id="progress"></span><span id="score">⭐ 0 points</span></div>
+      <div class="stats">
+        <span id="progress"></span>
+        <span id="score">⭐ 0 points</span>
+      </div>
       <div class="track"><div id="bar"></div></div>
     </header>
+
     <main>
       <div class="category" id="category"></div>
       <h2 id="question"></h2>
       <div class="answers" id="answers"></div>
       <div class="feedback" id="feedback" aria-live="polite"></div>
       <button class="action" id="next" disabled>Choose an answer</button>
+      <a class="home-link" href="index.html">← Back to Naila’s website</a>
     </main>
   </div>
 
   <script>
     const questions = [
-      { category: "HTML", type: "choice", prompt: "🏗️ Which HTML tag makes the biggest heading?",
-        options: ["<heading>", "<h1>", "<head>", "<title>"], answer: 1,
-        hint: "The number 1 means the highest-level heading." },
-      { category: "CSS", type: "choice", prompt: "🎨 Which CSS property changes text color?",
-        options: ["font-style", "background-color", "color", "text-size"], answer: 2,
-        hint: "This property is simply called color." },
-      { category: "JavaScript", type: "choice", prompt: "🪄 What does 3 + 4 evaluate to in JavaScript?",
-        options: ["34", "7", "An error", "Nothing"], answer: 1,
-        hint: "The plus sign adds these two numbers." },
-      { category: "HTML Challenge", type: "text", prompt: "⌨️ Fill in the blank: A clickable link uses the ____ tag.",
-        answers: ["a", "<a>", "anchor", "a tag", "<a></a>"], hint: "It’s a single-letter tag." },
-      { category: "CSS Challenge", type: "choice", prompt: "🕵️ Find the bug! Which line makes the page background purple?",
-        options: ["body { background-color: purple; }", "body = background purple;", "body: purple background;", "<body color='purple'>"], answer: 0,
-        hint: "CSS uses a selector, curly braces, and a property-value pair." },
-      { category: "JavaScript", type: "choice", prompt: "🔁 Which keyword declares a variable you can change later?",
-        options: ["let", "style", "html", "color"], answer: 0,
-        hint: "This keyword has three letters." },
-      { category: "JavaScript Challenge", type: "text", prompt: "🐛 What does console.log('Code' + '!') display?",
-        answers: ["code!", "'code!'", '"code!"'], hint: "The plus sign joins the two text pieces." },
-      { category: "HTML & CSS", type: "choice", prompt: "🧩 Which attribute points to the CSS file in a link tag?",
-        options: ["src", "href", "class", "alt"], answer: 1,
-        hint: "You’ll find it inside a link tag in the document head." },
-      { category: "Final Challenge", type: "text", prompt: "🚀 What command writes a message to the browser console?",
+      {
+        category: "HTML",
+        type: "choice",
+        prompt: "🏗️ Which HTML tag makes the biggest heading?",
+        options: ["<heading>", "<h1>", "<head>", "<title>"],
+        answer: 1,
+        hint: "The number 1 means the highest-level heading."
+      },
+      {
+        category: "CSS",
+        type: "choice",
+        prompt: "🎨 Which CSS property changes text color?",
+        options: ["font-style", "background-color", "color", "text-size"],
+        answer: 2,
+        hint: "This property is simply called color."
+      },
+      {
+        category: "JavaScript",
+        type: "choice",
+        prompt: "🪄 What does 3 + 4 evaluate to in JavaScript?",
+        options: ["34", "7", "An error", "Nothing"],
+        answer: 1,
+        hint: "The plus sign adds these two numbers."
+      },
+      {
+        category: "HTML Challenge",
+        type: "text",
+        prompt: "⌨️ Fill in the blank: A clickable link uses the ____ tag.",
+        answers: ["a", "<a>", "anchor", "a tag", "<a></a>"],
+        hint: "It’s a single-letter tag."
+      },
+      {
+        category: "CSS Challenge",
+        type: "choice",
+        prompt: "🕵️ Find the bug! Which line makes the page background purple?",
+        options: [
+          "body { background-color: purple; }",
+          "body = background purple;",
+          "body: purple background;",
+          "<body color='purple'>"
+        ],
+        answer: 0,
+        hint: "CSS uses a selector, curly braces, and a property-value pair."
+      },
+      {
+        category: "JavaScript",
+        type: "choice",
+        prompt: "🔁 Which keyword declares a variable you can change later?",
+        options: ["let", "style", "html", "color"],
+        answer: 0,
+        hint: "This keyword has three letters."
+      },
+      {
+        category: "JavaScript Challenge",
+        type: "text",
+        prompt: "🐛 What does console.log('Code' + '!') display?",
+        answers: ["code!", "'code!'", '"code!"'],
+        hint: "The plus sign joins the two text pieces."
+      },
+      {
+        category: "HTML & CSS",
+        type: "choice",
+        prompt: "🧩 Which attribute points to the CSS file in a link tag?",
+        options: ["src", "href", "class", "alt"],
+        answer: 1,
+        hint: "You’ll find it inside a link tag in the document head."
+      },
+      {
+        category: "Final Challenge",
+        type: "text",
+        prompt: "🚀 What command writes a message to the browser console?",
         answers: ["console.log", "console.log()", "console.log('hi')", 'console.log("hi")'],
-        hint: "Start with console, then a dot and the word log." }
+        hint: "Start with console, then a dot and the word log."
+      }
     ];
 
-    let index = 0;
+    let questionIndex = 0;
     let points = 0;
     let locked = false;
+    let phase = "answer";
 
     const $ = id => document.getElementById(id);
     const categoryEl = $("category");
     const questionEl = $("question");
     const answersEl = $("answers");
     const feedbackEl = $("feedback");
-    const nextBtn = $("next");
+    const nextButton = $("next");
 
     function renderQuestion() {
       locked = false;
-      const item = questions[index];
+      phase = "answer";
+
+      const item = questions[questionIndex];
       categoryEl.textContent = item.category;
       questionEl.textContent = item.prompt;
-      $("progress").textContent = `Question ${index + 1} of ${questions.length}`;
+      $("progress").textContent = `Question ${questionIndex + 1} of ${questions.length}`;
       $("score").textContent = `⭐ ${points} points`;
-      $("bar").style.width = `${(index / questions.length) * 100}%`;
+      $("bar").style.width = `${(questionIndex / questions.length) * 100}%`;
       feedbackEl.textContent = "";
       feedbackEl.className = "feedback";
       answersEl.innerHTML = "";
-      nextBtn.disabled = true;
-      nextBtn.textContent = item.type === "text" ? "Check answer" : "Choose an answer";
+      nextButton.disabled = item.type === "choice";
+      nextButton.textContent = item.type === "text" ? "Check answer" : "Choose an answer";
 
       if (item.type === "choice") {
         item.options.forEach((option, optionIndex) => {
@@ -132,23 +295,31 @@
         input.placeholder = "Type your answer here...";
         input.setAttribute("aria-label", "Type your answer");
         answersEl.appendChild(input);
-        nextBtn.addEventListener("click", checkText, { once: true });
-        input.addEventListener("keydown", event => {
-          if (event.key === "Enter" && !nextBtn.disabled) checkText();
+        input.addEventListener("input", () => {
+          nextButton.disabled = input.value.trim() === "";
         });
+        input.addEventListener("keydown", event => {
+          if (event.key === "Enter" && !nextButton.disabled) {
+            handleNext();
+          }
+        });
+        input.focus();
       }
     }
 
-    function checkChoice(selected, selectedButton) {
+    function checkChoice(selectedIndex, selectedButton) {
       if (locked) return;
       locked = true;
-      const item = questions[index];
+
+      const item = questions[questionIndex];
       const buttons = answersEl.querySelectorAll(".answer");
-      buttons.forEach((button, i) => {
+
+      buttons.forEach((button, index) => {
         button.disabled = true;
-        if (i === item.answer) button.classList.add("correct");
+        if (index === item.answer) button.classList.add("correct");
       });
-      if (selected === item.answer) {
+
+      if (selectedIndex === item.answer) {
         points += 10;
         feedbackEl.textContent = "✅ Correct! You earned 10 points.";
         feedbackEl.classList.add("good");
@@ -157,75 +328,100 @@
         feedbackEl.textContent = `❌ Not quite. Hint: ${item.hint}`;
         feedbackEl.classList.add("try");
       }
+
+      phase = "next";
       updateScore();
-      nextBtn.disabled = false;
-      nextBtn.textContent = index === questions.length - 1 ? "See my results" : "Next question";
+      nextButton.disabled = false;
+      nextButton.textContent = questionIndex === questions.length - 1
+        ? "See my results"
+        : "Next question";
     }
 
-    function checkText() {
+    function checkTextAnswer() {
       if (locked) return;
-      const item = questions[index];
+
+      const item = questions[questionIndex];
       const input = answersEl.querySelector("input");
       const response = input.value.trim().toLowerCase();
+
       if (!response) {
-        feedbackEl.textContent = "Type an answer first, then check it!";
-        feedbackEl.classList.add("try");
+        feedbackEl.textContent = "Type an answer first!";
+        feedbackEl.className = "feedback try";
         return;
       }
+
       locked = true;
       input.disabled = true;
-      const correct = item.answers.includes(response);
-      if (correct) {
+
+      if (item.answers.includes(response)) {
         points += 10;
         feedbackEl.textContent = "🎉 Nice work! You earned 10 points.";
-        feedbackEl.classList.add("good");
+        feedbackEl.className = "feedback good";
       } else {
-        feedbackEl.textContent = `❌ One possible answer: ${item.answers[0]}. ${item.hint}`;
-        feedbackEl.classList.add("try");
+        feedbackEl.textContent = `❌ One possible answer is "${item.answers[0]}". ${item.hint}`;
+        feedbackEl.className = "feedback try";
       }
+
+      phase = "next";
       updateScore();
-      nextBtn.disabled = false;
-      nextBtn.textContent = index === questions.length - 1 ? "See my results" : "Next question";
-      nextBtn.addEventListener("click", advance, { once: true });
+      nextButton.disabled = false;
+      nextButton.textContent = questionIndex === questions.length - 1
+        ? "See my results"
+        : "Next question";
     }
 
-    function updateScore() { $("score").textContent = `⭐ ${points} points`; }
+    function updateScore() {
+      $("score").textContent = `⭐ ${points} points`;
+    }
 
-    function advance() {
-      index++;
-      if (index < questions.length) renderQuestion();
-      else showResults();
+    function handleNext() {
+      if (phase === "answer") {
+        if (questions[questionIndex].type === "text") checkTextAnswer();
+        return;
+      }
+
+      if (phase === "restart") {
+        questionIndex = 0;
+        points = 0;
+        nextButton.classList.remove("purple");
+        renderQuestion();
+        return;
+      }
+
+      questionIndex++;
+
+      if (questionIndex < questions.length) {
+        renderQuestion();
+      } else {
+        showResults();
+      }
     }
 
     function showResults() {
+      phase = "restart";
       $("bar").style.width = "100%";
       $("progress").textContent = "Quiz complete!";
       categoryEl.textContent = "Your results";
       answersEl.innerHTML = "";
-      const message = points >= 80 ? "🏆 Coding superstar!" :
-        points >= 50 ? "🎉 Great job—your coding skills are growing!" :
-        "💪 Good try—keep practicing and play again!";
+
+      let message;
+      if (points >= 80) {
+        message = "🏆 Coding superstar!";
+      } else if (points >= 50) {
+        message = "🎉 Great job—your coding skills are growing!";
+      } else {
+        message = "💪 Good try—keep practicing and play again!";
+      }
+
       questionEl.textContent = `${message} You scored ${points} out of 90.`;
       feedbackEl.textContent = "Challenge complete!";
       feedbackEl.className = "feedback good";
-      nextBtn.textContent = "Play again";
-      nextBtn.disabled = false;
-      nextBtn.classList.add("purple");
-      nextBtn.onclick = restart;
+      nextButton.textContent = "Play again";
+      nextButton.disabled = false;
+      nextButton.classList.add("purple");
     }
 
-    function restart() {
-      index = 0;
-      points = 0;
-      nextBtn.classList.remove("purple");
-      nextBtn.onclick = null;
-      renderQuestion();
-    }
-
-    nextBtn.addEventListener("click", () => {
-      if (locked && questions[index]?.type === "choice") advance();
-    });
-
+    nextButton.addEventListener("click", handleNext);
     renderQuestion();
   </script>
 </body>
